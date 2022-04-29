@@ -1,21 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import { getReports } from "../lib/lighthouse";
+import { getReports } from "../lib/puppeteer";
 import Report from "../components/report";
 
-const urls = [
-  "https://www.example.com",
-  // "https://www.arteriorshome.com/",
-  // "https://www.madegoods.com/",
-  // "https://www.phillipscollection.com",
-  // "https://www.globalviews.com/",
-  // "http://www.palecek.com/palecek/",
-  // "https://fourhands.com/",
-  // "https://cyan.design/",
-];
-
 export async function getStaticProps() {
-  const reports = await getReports(urls);
+  const reports = await getReports();
 
   return {
     props: { reports },
