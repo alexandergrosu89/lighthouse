@@ -69,7 +69,7 @@ export default function Report({ reports }) {
                           key={index}
                           className={classNames(
                             getScoreColor(score),
-                            "whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium sm:pl-6"
+                            "whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold sm:pl-6"
                           )}
                         >
                           {parseInt(score)}
@@ -89,9 +89,9 @@ export default function Report({ reports }) {
 
 function getScoreColor(score) {
   if (score <= 50) {
-    return "text-red-400";
+    return "text-red-500";
   } else if (score >= 90) {
     return "text-green-400";
   }
-  return "text-orange-400";
+  return "text-amber-400";
 }
