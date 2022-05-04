@@ -4,17 +4,18 @@ import { getReports } from "../lib/puppeteer";
 import Report from "../components/report";
 
 export async function getStaticProps() {
-  const reports = await getReports();
+  const mobileReports = await getReports();
+  const desktopReports = await getReports(true);
 
   return {
-    props: { reports },
+    props: { desktopReports, mobileReports },
     revalidate: 60 * 10,
   };
 }
 
-export default function Home({ reports }) {
+export default function Home({ desktopReports, mobileReports }) {
   return (
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className=" max-w-full mx-auto sm:px-6 lg:px-8">
       <Head>
         <title>Performance measurements with Lighthouse</title>
         <meta
@@ -24,8 +25,13 @@ export default function Home({ reports }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex h-screen justify-center items-center">
-        <Report reports={reports} />
+      <main>
+        <div className="flex h-screen justify-center items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <Report reports={desktopReports} />
+            <Report reports={mobileReports} mobile={true} />
+          </div>
+        </div>
       </main>
 
       <footer className="text-center">

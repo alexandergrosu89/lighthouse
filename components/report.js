@@ -4,14 +4,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Report({ reports }) {
+export default function Report({ reports, mobile }) {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 ">
+    <div className="px-4 py-8 lg:px-8 lg:py-0">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-light text-gray-900">
-            Lighthouse - measure page quality
-          </h1>
+          <h2 className="text-xl font-light text-gray-900">
+            {mobile ? "Mobile" : "Desktop"}
+          </h2>
         </div>
       </div>
       <div className="mt-8 flex flex-col">
